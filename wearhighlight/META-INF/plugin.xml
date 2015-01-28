@@ -1,0 +1,60 @@
+<idea-plugin version="2">
+  <id>com.yourcompany.unique.plugin.id</id>
+  <name>Wear Highlight</name>
+  <version>1.0</version>
+  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+    <depends>com.intellij.modules.lang</depends>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="131"/>
+
+    <project-components>
+        <component>
+            <implementation-class>pl.tajchert.wearhighlight.ProjectConfigRegistrator</implementation-class>
+        </component>
+    </project-components>
+
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+      <applicationService serviceImplementation="pl.tajchert.wearhighlight.configuration.GlobalConfig"/>
+      <applicationConfigurable instance="pl.tajchert.wearhighlight.configuration.GlobalConfigConfigurable"/>
+
+      <projectService serviceImplementation="pl.tajchert.wearhighlight.configuration.ProjectConfig"/>
+
+      <projectService serviceImplementation="pl.tajchert.wearhighlight.TitleFormatter"
+                      serviceInterface="pl.tajchert.wearhighlight.TitleFormatter"/>
+      <editorTabTitleProvider implementation="pl.tajchert.wearhighlight.SameFilenameTitleProvider"/>
+      <applicationConfigurable>GlobalConfigConfigurable</applicationConfigurable>
+  </extensions>
+
+  <application-components>
+    <!-- Add your application components here -->
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
